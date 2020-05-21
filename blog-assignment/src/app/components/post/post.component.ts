@@ -4,40 +4,44 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
   @Input() post: any;
-  @Input() user : any;
+  @Input() user: any;
   public selectedPost: any;
   public comments: any;
   userComments: any;
   showComments = false;
-  constructor(private commentsService: CommentsService) { }
+  constructor(private commentsService: CommentsService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public getUserComments(post) {
     this.setSelectedUser(post);
-    if(this.showComments === true) {
+    if (this.showComments === true) {
       this.showComments = false;
-    } else  {
-      if(this.comments && this.comments.length >0) {
+    } else {
+      if (this.comments && this.comments.length > 0) {
         this.userComments = this.filterUsercomments(this.comments, post.id);
         this.showComments = true;
       } else {
-        this.commentsService.getComments().subscribe(comments => {
-          this.comments = comments;
-          this.userComments = this.filterUsercomments(this.comments, post.id);
-          this.showComments = true;
-        });
+        this.commentsService.getComments().subscribe(
+          (comments) => {
+            this.comments = comments;
+            this.userComments = this.filterUsercomments(this.comments, post.id);
+            this.showComments = true;
+          },
+          (error) => {
+            console.log('Error Occured', error);
+          }
+        );
       }
     }
   }
 
   public filterUsercomments(comments, id) {
-    return comments.filter(item => {
+    return comments.filter((item) => {
       return item.postId === id;
     });
   }
@@ -45,6 +49,4 @@ export class PostComponent implements OnInit {
   public setSelectedUser(user) {
     this.selectedPost = user;
   }
-
-
 }

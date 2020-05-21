@@ -25,6 +25,9 @@ export class HeaderComponent implements OnInit {
     this.userService.getUsers().subscribe(users => {
       this.users = users;
       console.log(this.users);
+    },
+    error => {
+      console.log('Error Occured', error);
     })
   }
 
@@ -38,6 +41,9 @@ export class HeaderComponent implements OnInit {
         this.posts = posts;
         console.log(posts);
         this.userPosts = this.filterUserPosts(posts, user.id);
+      },
+      error => {
+        console.log('Error Occured', error);
       });
     }
   }
