@@ -55,9 +55,7 @@ export class HeaderComponent implements OnInit {
   }
 
   filterUserPosts(posts: Post[], id: number) {
-    return posts.filter((item) => {
-      return item.userId === id;
-    });
+    return posts.filter((item) => item.userId === id);
   }
 
   setSelectedUser(user: User) {
