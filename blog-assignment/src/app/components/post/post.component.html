@@ -1,0 +1,21 @@
+<div class="post-container">
+    <div class="post">
+        <div class="post-content">
+            <div>
+                Title: {{post.title}}
+            </div>
+            <div>
+                Body: {{post.body}}
+            </div>
+        </div>
+    </div>
+    <div class="post-action">
+        <button (click)="getUserComments(post)">Comments</button>
+    </div>
+</div>
+<div class="post-comments" *ngIf="showComments">
+    <div class="user-posts" *ngFor="let comment of userComments; let i=index;">
+        <div><h3>Comment: {{i+1}}</h3></div>
+        <app-comments [comment]="comment"></app-comments>
+    </div>
+</div>
