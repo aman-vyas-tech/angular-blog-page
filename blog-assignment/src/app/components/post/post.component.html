@@ -17,5 +17,6 @@
     <div class="user-posts" *ngFor="let comment of userComments; let i=index;">
         <div><h3>Comment: {{i+1}}</h3></div>
         <app-comments [comment]="comment"></app-comments>
+        <mat-divider></mat-divider>
     </div>
 </div>
