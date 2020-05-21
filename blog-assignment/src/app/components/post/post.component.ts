@@ -11,12 +11,11 @@ export class PostComponent {
   @Input() user: any;
   public selectedPost: any;
   public comments: any;
-  userComments: any;
-  showComments = false;
+  public userComments: any;
+  public showComments = false;
   constructor(private commentsService: CommentsService) {}
 
   public getUserComments(post) {
-    this.setSelectedUser(post);
     if (this.showComments === true) {
       this.showComments = false;
     } else {
@@ -44,7 +43,4 @@ export class PostComponent {
     });
   }
 
-  public setSelectedUser(user) {
-    this.selectedPost = user;
-  }
 }
