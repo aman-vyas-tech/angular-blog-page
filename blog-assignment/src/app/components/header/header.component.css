@@ -1,39 +1,38 @@
 .flex-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .header-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 button {
-    width: 132px;
-    height: 40px;
-    margin-left: 5px;
+  width: 132px;
+  height: 40px;
+  margin-left: 5px;
 }
 
 .post-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
 }
 
 .user-posts {
-    width: 60%;
-    background-color:darkgray;
-    margin-top: 5%;
+  width: 60%;
+  background-color: darkgray;
+  margin-top: 5%;
 }
 
 .active {
-    background-color: chocolate;
+  background-color: chocolate;
 }
 
 .show-more {
-    margin-top: 5%;
+  margin-top: 5%;
 }
-

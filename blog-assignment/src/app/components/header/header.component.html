@@ -5,6 +5,7 @@
                     'active': selectedUser == user}" (click)="getUserPosts(user)">{{user.username}}</button>
         </div>
     </div>
+
     <div class="post-container" *ngIf="userPosts">
         <div class="heading">
             <h2>Posts from {{selectedUser.name}}:</h2>
@@ -17,6 +18,7 @@
         <div class="show-more">
             <button mat-raised-button color="primary" *ngIf="showButton"
                 (click)="showLength = userPosts.length; showButton= false;">Load All..</button>
+
             <button mat-raised-button color="primary" *ngIf="!showButton"
                 (click)="showLength = 3;showButton= true;">Show Less..</button>
         </div>

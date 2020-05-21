@@ -4,20 +4,26 @@
             <div>
                 Title: {{post.title}}
             </div>
-            
+
             <div>
                 Body: {{post.body}}
             </div>
         </div>
     </div>
+
     <div class="post-action">
         <button mat-flat-button color="primary" (click)="getUserComments(post)">Comments</button>
     </div>
 </div>
+
 <div class="post-comments" *ngIf="showComments">
     <div class="user-posts" *ngFor="let comment of userComments; let i=index;">
-        <div><h3>Comment: {{i+1}}</h3></div>
+        <div>
+            <h3>Comment: {{i+1}}</h3>
+        </div>
+
         <app-comments [comment]="comment"></app-comments>
+
         <mat-divider></mat-divider>
     </div>
 </div>

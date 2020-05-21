@@ -1,5 +1,8 @@
 import { CommentsService } from './../../services/comments.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
+import { Post } from '../../models/post';
+import { User } from '../../models/user';
+import { Comment } from '../../models/comment';
 
 @Component({
   selector: 'app-post',
@@ -7,15 +10,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent {
-  @Input() post: any;
-  @Input() user: any;
-  public selectedPost: any;
-  public comments: any;
-  public userComments: any;
-  public showComments = false;
+  @Input() post: Post;
+  @Input() user: User;
+  selectedPost: Post;
+  comments: Comment[];
+  userComments: Comment[];
+  showComments = false;
   constructor(private commentsService: CommentsService) {}
 
-  public getUserComments(post) {
+  getUserComments(post: Post) {
     if (this.showComments === true) {
       this.showComments = false;
     } else {
@@ -24,7 +27,7 @@ export class PostComponent {
         this.showComments = true;
       } else {
         this.commentsService.getComments().subscribe(
-          (comments) => {
+          (comments: Comment[]) => {
             this.comments = comments;
             this.userComments = this.filterUsercomments(this.comments, post.id);
             this.showComments = true;
@@ -37,10 +40,7 @@ export class PostComponent {
     }
   }
 
-  public filterUsercomments(comments, id) {
-    return comments.filter((item) => {
-      return item.postId === id;
-    });
+  filterUsercomments(comments: Comment[], id: number) {
+    return comments.filter((comment: Comment) => comment.postId === id);
   }
-
 }

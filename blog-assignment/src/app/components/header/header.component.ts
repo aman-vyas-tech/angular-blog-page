@@ -1,61 +1,66 @@
 import { PostsService } from './../../services/posts.service';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { Post } from '../../models/post';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  public users: any;
-  public userPosts: any;
-  public selectedUser: any;
-  public posts: any;
-  public showLength = 3;
-  public showButton = true;
-  constructor(private userService: UserService,
-              private postService: PostsService) { }
+  users: User[];
+  userPosts: Post[];
+  selectedUser: User;
+  posts: Post[];
+  showLength = 3;
+  showButton = true;
+  constructor(
+    private userService: UserService,
+    private postService: PostsService
+  ) {}
 
   ngOnInit(): void {
     this.getUsersData();
   }
 
-  public getUsersData() {
-    this.userService.getUsers().subscribe(users => {
-      this.users = users;
-      console.log(this.users);
-    },
-    error => {
-      console.log('Error Occured', error);
-    })
+  getUsersData() {
+    this.userService.getUsers().subscribe(
+      (users) => {
+        this.users = users;
+      },
+      (error) => {
+        console.log('Error Occured', error);
+      }
+    );
   }
 
-  public getUserPosts(user) {
+  getUserPosts(user: User) {
     this.setSelectedUser(user);
     this.showButton = true;
-    if(this.posts && this.posts.length >0) {
+    if (this.posts && this.posts.length > 0) {
       this.userPosts = this.filterUserPosts(this.posts, user.id);
     } else {
-      this.postService.getPost().subscribe(posts => {
-        this.posts = posts;
-        console.log(posts);
-        this.userPosts = this.filterUserPosts(posts, user.id);
-      },
-      error => {
-        console.log('Error Occured', error);
-      });
+      this.postService.getPost().subscribe(
+        (posts: Post[]) => {
+          this.posts = posts;
+          this.userPosts = this.filterUserPosts(posts, user.id);
+        },
+        (error) => {
+          console.log('Error Occured', error);
+        }
+      );
     }
   }
 
-  public filterUserPosts(posts, id) {
-    return posts.filter(item => {
+  filterUserPosts(posts: Post[], id: number) {
+    return posts.filter((item) => {
       return item.userId === id;
     });
   }
 
-  public setSelectedUser(user) {
+  setSelectedUser(user: User) {
     this.selectedUser = user;
   }
-
 }
