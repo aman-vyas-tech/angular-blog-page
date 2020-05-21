@@ -11,8 +11,9 @@
 }
 
 button {
-    width: 130px;
-    height: 30px;
+    width: 132px;
+    height: 40px;
+    margin-left: 5px;
 }
 
 .post-container {
@@ -24,7 +25,7 @@ button {
 
 .user-posts {
     width: 60%;
-    background-color:cadetblue;
+    background-color:darkgray;
     margin-top: 5%;
 }
 

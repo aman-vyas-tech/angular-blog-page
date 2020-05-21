@@ -2,9 +2,8 @@
     <div class="header-container">
         <ng-container *ngIf="users">
             <div class="users" *ngFor="let user of users">
-                <button [ngClass]="{
-                    'active': selectedUser == user}"
-                    (click)="getUserPosts(user)">{{user.username}}</button>
+                <button mat-raised-button color="primary" [ngClass]="{
+                    'active': selectedUser == user}" (click)="getUserPosts(user)">{{user.username}}</button>
             </div>
         </ng-container>
     </div>
@@ -16,8 +15,8 @@
             <app-post [post]="post" [user]="selectedUser"></app-post>
         </div>
         <div class="show-more">
-            <button *ngIf="showButton" (click)="showLength = userPosts.length; showButton= false;">Load All..</button>
-            <button *ngIf="!showButton" (click)="showLength = 3;showButton= true;">Show Less..</button>
+            <button mat-raised-button color="primary" *ngIf="showButton" (click)="showLength = userPosts.length; showButton= false;">Load All..</button>
+            <button mat-raised-button color="primary" *ngIf="!showButton" (click)="showLength = 3;showButton= true;">Show Less..</button>
         </div>
     </div>
 </div>
