@@ -10,7 +10,7 @@ export class CommentsService {
 
   constructor(private http: HttpClient) { }
 
-  public getComments() : Observable<Comment[]>{
+  public getComments(): Observable<Comment[]>{
     const url = 'https://jsonplaceholder.typicode.com/comments';
     return this.http.get(url) as Observable<Comment[]>;
   }

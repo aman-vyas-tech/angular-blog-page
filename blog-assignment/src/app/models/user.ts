@@ -18,6 +18,6 @@ export interface User {
     company: {
       name: string;
       catchPhrase: string;
-      bs: string
-    }
+      bs: string;
+    };
 }
