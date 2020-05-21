@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css'],
 })
-export class PostComponent implements OnInit {
+export class PostComponent {
   @Input() post: any;
   @Input() user: any;
   public selectedPost: any;
@@ -14,8 +14,6 @@ export class PostComponent implements OnInit {
   userComments: any;
   showComments = false;
   constructor(private commentsService: CommentsService) {}
-
-  ngOnInit(): void {}
 
   public getUserComments(post) {
     this.setSelectedUser(post);
