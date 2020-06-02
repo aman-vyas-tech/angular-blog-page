@@ -14,4 +14,8 @@ export class UserService {
     const url = 'https://jsonplaceholder.typicode.com/users';
     return this.http.get(url) as Observable<User[]>;
   }
+  public geFaketUser(): Observable<User[]> {
+    const url = 'https://jsonplaceholder.typicode.com/user';
+    return this.http.get(url) as Observable<User[]>;
+  }
 }
