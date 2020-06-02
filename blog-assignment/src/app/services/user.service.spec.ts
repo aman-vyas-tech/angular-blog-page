@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import { UserService } from './user.service';
 
-fdescribe('UserService', () => {
+describe('UserService', () => {
   let service: UserService;
   let httpMock: HttpTestingController;
 
