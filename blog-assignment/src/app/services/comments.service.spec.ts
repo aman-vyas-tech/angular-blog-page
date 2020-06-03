@@ -6,7 +6,7 @@ import {
   HttpClientTestingModule,
 } from '@angular/common/http/testing';
 
-fdescribe('CommentsService', () => {
+describe('CommentsService', () => {
   let service: CommentsService;
   let httpMock: HttpTestingController;
 
