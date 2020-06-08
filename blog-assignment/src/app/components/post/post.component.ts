@@ -16,6 +16,7 @@ export class PostComponent {
   comments: Comment[];
   userComments: Comment[];
   showComments = false;
+  error: any;
   constructor(private commentsService: CommentsService) {}
 
   getUserComments(post: Post) {
@@ -33,6 +34,7 @@ export class PostComponent {
             this.showComments = true;
           },
           (error) => {
+            this.error = error;
             console.log('Error Occured', error);
           }
         );

@@ -16,6 +16,8 @@ export class HeaderComponent implements OnInit {
   posts: Post[];
   showLength = 3;
   showButton = true;
+  error: any;
+
   constructor(
     private userService: UserService,
     private postService: PostsService
@@ -31,6 +33,7 @@ export class HeaderComponent implements OnInit {
         this.users = users;
       },
       (error) => {
+        this.error = error;
         console.log('Error Occured', error);
       }
     );
@@ -49,6 +52,7 @@ export class HeaderComponent implements OnInit {
         },
         (error) => {
           console.log('Error Occured', error);
+          this.error = error;
         }
       );
     }
